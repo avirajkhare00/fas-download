@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - CI/CD pipeline with GitHub Actions
-- Docker support with multi-stage builds
 - Cross-platform builds for Linux, macOS, and Windows
 - Automated releases with checksums
+- Docker support for local development
 
 ## [1.0.0] - 2024-01-01
 

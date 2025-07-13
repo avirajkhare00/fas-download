@@ -172,11 +172,10 @@ The project uses GitHub Actions for continuous integration and deployment:
    - Pre-built binaries for all platforms
    - SHA256 checksums
    - Detailed release notes
-   - Docker images (multi-arch)
 
-#### Docker Support
+#### Docker Support (Local Development)
 ```bash
-# Build Docker image
+# Build Docker image locally
 docker build -t fas-download .
 
 # Run with Docker
