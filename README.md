@@ -195,3 +195,16 @@ go test -v -cover ./...
 # Run specific test
 go test -v -run TestNewAdaptiveDownloader
 ```
+
+### Code Quality
+
+```bash
+# Run linting (includes go vet and staticcheck)
+./build.sh lint
+
+# Install staticcheck for local development
+go install honnef.co/go/tools/cmd/staticcheck@latest
+
+# Run staticcheck manually
+staticcheck ./...
+```

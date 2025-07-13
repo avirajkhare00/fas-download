@@ -361,27 +361,24 @@ func (d *AdaptiveDownloader) reportProgress() {
 	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()
 
-	for {
-		select {
-		case <-ticker.C:
-			d.Stats.mu.Lock()
-			downloaded := d.Stats.BytesDownloaded
-			d.Stats.mu.Unlock()
+	for range ticker.C {
+		d.Stats.mu.Lock()
+		downloaded := d.Stats.BytesDownloaded
+		d.Stats.mu.Unlock()
 
-			if d.FileSize > 0 && downloaded >= d.FileSize {
-				return
-			}
+		if d.FileSize > 0 && downloaded >= d.FileSize {
+			return
+		}
 
-			elapsed := time.Since(d.Stats.StartTime)
-			speed := float64(downloaded) / elapsed.Seconds() / 1024 / 1024 // MB/s
+		elapsed := time.Since(d.Stats.StartTime)
+		speed := float64(downloaded) / elapsed.Seconds() / 1024 / 1024 // MB/s
 
-			if d.FileSize > 0 {
-				progress := float64(downloaded) / float64(d.FileSize) * 100
-				fmt.Printf("\rProgress: %.1f%% (%d/%d bytes) Speed: %.2f MB/s",
-					progress, downloaded, d.FileSize, speed)
-			} else {
-				fmt.Printf("\rDownloaded: %d bytes Speed: %.2f MB/s", downloaded, speed)
-			}
+		if d.FileSize > 0 {
+			progress := float64(downloaded) / float64(d.FileSize) * 100
+			fmt.Printf("\rProgress: %.1f%% (%d/%d bytes) Speed: %.2f MB/s",
+				progress, downloaded, d.FileSize, speed)
+		} else {
+			fmt.Printf("\rDownloaded: %d bytes Speed: %.2f MB/s", downloaded, speed)
 		}
 	}
 }

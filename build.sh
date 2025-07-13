@@ -74,6 +74,21 @@ run_lint() {
         print_error "✗ go vet failed"
         exit 1
     fi
+
+    # Run staticcheck if available
+    if command -v staticcheck >/dev/null 2>&1; then
+        print_status "Running staticcheck..."
+        staticcheck ./...
+
+        if [ $? -eq 0 ]; then
+            print_status "✓ staticcheck passed"
+        else
+            print_error "✗ staticcheck failed"
+            exit 1
+        fi
+    else
+        print_warning "staticcheck not found, skipping (install with: go install honnef.co/go/tools/cmd/staticcheck@latest)"
+    fi
 }
 
 # Function to clean build directory
