@@ -1,0 +1,49 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+CHANGELOG.md
+prd.md
+
+# CI/CD
+.github
+
+# Config files
+config.yaml
+*.yaml
+*.yml
+
+# Binaries
+fas-download
+fas-download.exe
+fas-download-*
+
+# Build artifacts
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Downloaded files
+*.bin
+*.zip
+*.tar.gz
+*.mp4
+*.torrent
+
+# Temporary files
+tmp/
+temp/
